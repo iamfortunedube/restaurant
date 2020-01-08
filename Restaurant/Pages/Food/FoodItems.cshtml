@@ -1,0 +1,52 @@
+﻿@page
+@model Restaurant.Pages.Food.FoodItemsModel
+@{
+    ViewData["Title"] = "FoodItems";
+}
+
+<h1>Food Items</h1>
+
+<form method="get">
+    <div class="form-group">
+        <div class="input-group">
+            <input type="search" class="form-control" value="" placeholder="Search by name" asp-for="SearchFoodItem" />
+            <span class="input-group-btn">
+                <button class="btn btn-default">
+                    <i class="glyphicon glyphicon-search"></i>
+                </button>
+            </span>
+        </div>
+    </div>
+</form>
+<table class="table">
+    <tr>
+        <th>Food Item</th>
+        <th>Description</th>
+        <th>Category</th>
+        <th>Price</th>
+        <th>Action</th>
+    </tr>
+    @foreach (var foodItem in Model.FoodItems)
+    {
+        <tr>
+            <td>
+                @foodItem.FoodItemName
+            </td>
+            <td>@foodItem.Description</td>
+            <td>@foodItem.GetCategory</td>
+            <td>@foodItem.Price</td>
+            <td>
+                <a class="btn btn-primary" asp-page="./FoodItemDetails" asp-route-foodItemId="@foodItem.Id">
+                    View
+                </a>
+                <a class="btn btn-info" asp-page="./EditFoodItem" asp-route-foodItemId="@foodItem.Id">
+                    Edit
+                </a>
+                <a class="btn btn-danger" asp-page="./DeleteFoodItem" asp-route-foodItemId="@foodItem.Id">
+                    Delete
+                </a>
+            </td>
+        </tr>
+    }
+</table>
+<a asp-page="./EditFoodItem" class="btn btn-primary">Add New</a>

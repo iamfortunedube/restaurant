@@ -1,0 +1,24 @@
+﻿@page "{categoryId:int?}"
+@model Restaurant.Pages.Food.EditCategoryModel
+@{
+    ViewData["Title"] = "EditCategory";
+}
+
+<h1>Edit @Model.Category.CategoryName</h1>
+
+<form method="post">
+    <input type="hidden" asp-for="Category.Id" />
+    <div class="form-group">
+        <label asp-for="Category.CategoryName"></label>
+        <input asp-for="Category.CategoryName" class="form-control" />
+        <span class="text-danger" asp-validation-for="Category.CategoryName"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Category.SellingTime"></label>
+        <input asp-for="Category.SellingTime" class="form-control" />
+        <span class="text-danger" asp-validation-for="Category.SellingTime"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+

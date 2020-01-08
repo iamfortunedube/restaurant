@@ -1,0 +1,33 @@
+﻿@page "{foodItemId:int?}"
+@model Restaurant.Pages.Food.EditFoodItemModel
+@{
+    ViewData["Title"] = "EditFoodItem";
+}
+
+<h1>Edit @Model.FoodItem.FoodItemName</h1>
+
+
+<form method="post">
+    <input type="hidden" asp-for="FoodItem.Id" />
+    <div class="form-group">
+        <label asp-for="FoodItem.FoodItemName"></label>
+        <input asp-for="FoodItem.FoodItemName" class="form-control" />
+        <span class="text-danger" asp-validation-for="FoodItem.FoodItemName"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="FoodItem.Description"></label>
+        <input asp-for="FoodItem.Description" class="form-control" />
+        <span class="text-danger" asp-validation-for="FoodItem.Description"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="FoodItem.GetCategory"></label>
+        <input asp-for="FoodItem.GetCategory" class="form-control" />
+        <span class="text-danger" asp-validation-for="FoodItem.GetCategory"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="FoodItem.Price"></label>
+        <input asp-for="FoodItem.Price" class="form-control" />
+        <span class="text-danger" asp-validation-for="FoodItem.Price"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>

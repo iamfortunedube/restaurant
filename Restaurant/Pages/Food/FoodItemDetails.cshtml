@@ -1,0 +1,16 @@
+﻿@page "{foodItemId:int}"
+@model Restaurant.Pages.Food.FoodItemDetailsModel
+@{
+    ViewData["Title"] = "FoodItemDetails";
+}
+<h2>@Model.FoodItem.FoodItemName</h2>
+
+<div>
+    Description: @Model.FoodItem.Description
+</div>
+<div>
+    Price: @Model.FoodItem.Price
+</div>
+<div>
+    Category: @Model.FoodItem.GetCategory
+</div>
