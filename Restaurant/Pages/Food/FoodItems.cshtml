@@ -33,8 +33,8 @@
                 @foodItem.FoodItemName
             </td>
             <td>@foodItem.Description</td>
-            <td>@foodItem.GetCategory</td>
-            <td>@foodItem.Price</td>
+            <td>@foodItem.CategoryId</td>
+            <td>R @foodItem.Price.00</td>
             <td>
                 <a class="btn btn-primary" asp-page="./FoodItemDetails" asp-route-foodItemId="@foodItem.Id">
                     View

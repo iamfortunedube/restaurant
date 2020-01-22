@@ -1,0 +1,38 @@
+﻿@page "{categoryId:int?}"
+@model Client_Web.Pages.Food.FoodItemsModel
+@{
+    ViewData["Title"] = "FoodItems";
+}
+
+<h1>Food Items</h1>
+
+<form method="get">
+    <div class="form-group">
+        <div class="input-group">
+            <span class="input-group-btn">
+                <button class="btn btn-default">
+                    <i class="glyphicon glyphicon-search"></i>
+                </button>
+            </span>
+        </div>
+    </div>
+</form>
+<table class="table">
+    <tr>
+        <th>Food Item</th>
+        <th>Description</th>
+        <th>Category</th>
+        <th>Price</th>
+    </tr>
+    @foreach (var foodItem in Model.FoodItems)
+    {
+        <tr>
+            <td>
+                @foodItem.FoodItemName
+            </td>
+            <td>@foodItem.Description</td>
+            <td>@foodItem.CategoryId</td>
+            <td>R @foodItem.Price.00</td>
+        </tr>
+    }
+</table>

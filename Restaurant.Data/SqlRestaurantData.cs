@@ -18,6 +18,12 @@ namespace Restaurant.Data
             return newCategory;
         }
 
+        public ShoppingCart AddItemToCart(ShoppingCart newCartItem)
+        {
+            dbContext.Add(newCartItem);
+            return newCartItem;
+        }
+
         public FoodItem AddFoodItem(FoodItem newFoodItem)
         {
             dbContext.Add(newFoodItem);
@@ -76,6 +82,10 @@ namespace Restaurant.Data
                         select f;
             return query;
         }
+        public FoodItem GetFoodItemByCategory(int? categoryId)
+        {
+            return dbContext.FoodItems.SingleOrDefault(c=> c.CategoryId == categoryId);
+        }
 
         public Category UpdateCategory(Category updatedCategory)
         {
@@ -89,6 +99,12 @@ namespace Restaurant.Data
             var entity = dbContext.FoodItems.Attach(updatedFoodItem);
             entity.State = EntityState.Modified;
             return updatedFoodItem;
+        }
+
+        List<FoodItem> IRestaurantData.GetFoodItemByCategory(int? categoryId)
+        {
+            var query = from f in dbContext.FoodItems where f.CategoryId == categoryId orderby f.FoodItemName select f;
+            return query.ToList();
         }
     }
 }

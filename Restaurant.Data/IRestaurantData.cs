@@ -14,9 +14,12 @@ namespace Restaurant.Data
 
         IEnumerable<FoodItem> GetFoodItemByName(string foodItemName);
         FoodItem GetFoodItemById(int Id);
+        List<FoodItem> GetFoodItemByCategory(int? categoryId);
         FoodItem UpdateFoodItem(FoodItem updatedFoodItem);
         FoodItem AddFoodItem(FoodItem newFoodItem);
         FoodItem DeleteFoodItem(int Id);
+
+        ShoppingCart AddItemToCart(ShoppingCart newCartItem);
         int Commit();
     }
 }

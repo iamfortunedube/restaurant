@@ -34,6 +34,7 @@ namespace Restaurant.Pages.Food
                 return RedirectToPage("./NotFound");
             }
             return Page();
+
         }
 
         public IActionResult OnPost()
@@ -42,7 +43,7 @@ namespace Restaurant.Pages.Food
             {
                 return Page();
             }
-            if (Category.Id > 0)
+            if (Category.CategoryId > 0)
             {
                 restaurantData.UpdateCategory(Category);
             }
@@ -51,7 +52,7 @@ namespace Restaurant.Pages.Food
                 restaurantData.AddCategory(Category);
             }
             restaurantData.Commit();
-            return RedirectToPage("./MenuItems", new { categoryId = Category.Id });
+            return RedirectToPage("./MenuItems", new { categoryId = Category.CategoryId });
         }
     }
 }

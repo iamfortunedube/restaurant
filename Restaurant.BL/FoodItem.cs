@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace Restaurant.BL
@@ -17,6 +18,9 @@ namespace Restaurant.BL
 
         public int Price { get; set; }
 
-        public string GetCategory { get; set; }
+        public byte[] FoodItemImage { get; set; }
+
+        [ForeignKey("Category_FK")]
+        public int CategoryId { get; set; }
     }
 }

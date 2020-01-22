@@ -30,13 +30,13 @@
             </td>
             <td>@category.SellingTime</td>
             <td>
-                <a class="btn btn-primary" asp-page="./MenuItems" asp-route-categoryId="@category.Id">
+                <a class="btn btn-primary" asp-page="./MenuItems" asp-route-categoryId="@category.CategoryId">
                     View
                 </a>
-                <a class="btn btn-info" asp-page="./EditCategory" asp-route-categoryId="@category.Id">
+                <a class="btn btn-info" asp-page="./EditCategory" asp-route-categoryId="@category.CategoryId">
                     Edit
                 </a>
-                <a class="btn btn-danger" asp-page="./DeleteCategory" asp-route-categoryId="@category.Id">
+                <a class="btn btn-danger" asp-page="./DeleteCategory" asp-route-categoryId="@category.CategoryId">
                     Delete
                 </a>
             </td>

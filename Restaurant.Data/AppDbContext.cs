@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Restaurant.Data
 {
-    public class AppDbContext : IdentityDbContext<IdentityUser>
+    public class AppDbContext : IdentityDbContext
     {
         public AppDbContext(DbContextOptions<AppDbContext> options)
             : base(options)
@@ -17,5 +17,6 @@ namespace Restaurant.Data
         }
         public DbSet<Category> Categories { get; set; }
         public DbSet<FoodItem> FoodItems { get; set; }
+        public DbSet<ShoppingCart> ShoppingCartItems { get; set; }
     }
 }

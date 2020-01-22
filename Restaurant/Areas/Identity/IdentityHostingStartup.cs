@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Restaurant.Models;
+using Restaurant.Data;
 
 [assembly: HostingStartup(typeof(Restaurant.Areas.Identity.IdentityHostingStartup))]
 namespace Restaurant.Areas.Identity
@@ -15,12 +15,6 @@ namespace Restaurant.Areas.Identity
         public void Configure(IWebHostBuilder builder)
         {
             builder.ConfigureServices((context, services) => {
-                services.AddDbContext<RestaurantContext>(options =>
-                    options.UseSqlServer(
-                        context.Configuration.GetConnectionString("RestaurantContextConnection")));
-
-                services.AddDefaultIdentity<IdentityUser>()
-                    .AddEntityFrameworkStores<RestaurantContext>();
             });
         }
     }

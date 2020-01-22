@@ -3,31 +3,39 @@
 @{
     ViewData["Title"] = "EditFoodItem";
 }
-
-<h1>Edit @Model.FoodItem.FoodItemName</h1>
+@if (Model.FoodItem.Id > 0)
+{
+    <h1>Edit @Model.FoodItem.FoodItemName</h1>
+}
+else
+{
+    <h1>Add New Food Item</h1>
+}
 
 
 <form method="post">
     <input type="hidden" asp-for="FoodItem.Id" />
     <div class="form-group">
         <label asp-for="FoodItem.FoodItemName"></label>
-        <input asp-for="FoodItem.FoodItemName" class="form-control" />
+        <input asp-for="FoodItem.FoodItemName" class="form-control" required />
         <span class="text-danger" asp-validation-for="FoodItem.FoodItemName"></span>
     </div>
     <div class="form-group">
         <label asp-for="FoodItem.Description"></label>
-        <input asp-for="FoodItem.Description" class="form-control" />
+        <input asp-for="FoodItem.Description" class="form-control" required />
         <span class="text-danger" asp-validation-for="FoodItem.Description"></span>
     </div>
     <div class="form-group">
-        <label asp-for="FoodItem.GetCategory"></label>
-        <input asp-for="FoodItem.GetCategory" class="form-control" />
-        <span class="text-danger" asp-validation-for="FoodItem.GetCategory"></span>
+        <label>Category</label>
+        <select class="form-control" asp-for="FoodItem.CategoryId" asp-items="@(new SelectList(Model.DisplayCategory, "CategoryId", "CategoryName"))" id="ddlCategories" required>
+            <option value="" selected disabled>--Select Category--</option>
+        </select>
     </div>
     <div class="form-group">
         <label asp-for="FoodItem.Price"></label>
-        <input asp-for="FoodItem.Price" class="form-control" />
+        <input asp-for="FoodItem.Price" class="form-control" required />
         <span class="text-danger" asp-validation-for="FoodItem.Price"></span>
     </div>
+    
     <button type="submit" class="btn btn-primary">Save</button>
 </form>

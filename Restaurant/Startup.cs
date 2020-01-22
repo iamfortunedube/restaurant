@@ -46,6 +46,7 @@ namespace Restaurant
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddDbContext<AppDbContext>();
+            services.AddAuthentication();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -68,7 +69,6 @@ namespace Restaurant
 
             app.UseMvc();
             UpdateDatabase(app);
-            app.UseAuthentication();
         }
 
         private void UpdateDatabase(IApplicationBuilder app)

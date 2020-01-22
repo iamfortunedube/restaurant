@@ -1,0 +1,23 @@
+﻿@page
+@model Client_Web.Pages.Food.CategoriesModel
+@{
+    ViewData["Title"] = "Categories";
+}
+
+<h1>Categories</h1>
+
+<table class="table">
+    <tr>
+        <th>Category Name</th>
+        <th>Selling Time</th>
+    </tr>
+    @foreach (var category in Model.Categories)
+    {
+        <tr>
+            <td>
+                <a asp-page="./FoodItems" asp-route-categoryId="@category.CategoryId">@category.CategoryName</a>
+            </td>
+            <td>@category.SellingTime</td>
+        </tr>
+    }
+</table>
