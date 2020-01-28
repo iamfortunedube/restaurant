@@ -3,7 +3,21 @@
 @{
     ViewData["Title"] = "FoodItems";
 }
-
+<style>
+    .qty {
+        width: 40px;
+        height: 25px;
+        text-align: center;
+    }
+    input.qtyplus {
+        width:25px;
+        height:25px;
+    }
+    input.qtyminus {
+        width:25px;
+        height:25px;
+    }
+</style>
 <h1>Food Items</h1>
 
 <form method="get">
@@ -23,6 +37,8 @@
         <th>Description</th>
         <th>Category</th>
         <th>Price</th>
+        <th>Quantity</th>
+        <th>Action</th>
     </tr>
     @foreach (var foodItem in Model.FoodItems)
     {
@@ -33,6 +49,53 @@
             <td>@foodItem.Description</td>
             <td>@foodItem.CategoryId</td>
             <td>R @foodItem.Price.00</td>
+            <td>
+                <input type="button" value="-" class="qtyminus" field="quantity" />
+                <input type='text' name='quantity' value='0' class='qty' />
+                <input type='button' value='+' class='qtyplus' field='quantity' />
+            </td>
+            <td><input type="button" class="btn btn-success" value="Add to basket"/></td>
         </tr>
     }
 </table>
+<script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function(){
+        // This button will increment the value
+        $('.qtyplus').click(function(e){
+            // Stop acting like a button
+            e.preventDefault();
+            // Get the field name
+            fieldName = $(this).attr('field');
+            // Get its current value
+            var currentVal = parseInt($('input[name='+fieldName+']').val());
+            // If is not undefined
+            if (!isNaN(currentVal)) {
+                // Increment
+                $('input[name='+fieldName+']').val(currentVal + 1);
+            } else {
+                // Otherwise put a 0 there
+                $('input[name='+fieldName+']').val(0);
+            }
+        });
+        // This button will decrement the value till 0
+        $(".qtyminus").click(function(e) {
+            // Stop acting like a button
+            e.preventDefault();
+            // Get the field name
+            fieldName = $(this).attr('field');
+            // Get its current value
+            var currentVal = parseInt($('input[name='+fieldName+']').val());
+            // If it isn't undefined or its greater than 0
+            if (!isNaN(currentVal) && currentVal > 0) {
+                // Decrement one
+                $('input[name='+fieldName+']').val(currentVal - 1);
+            } else {
+                // Otherwise put a 0 there
+                $('input[name='+fieldName+']').val(0);
+            }
+        });
+    });
+</script>
