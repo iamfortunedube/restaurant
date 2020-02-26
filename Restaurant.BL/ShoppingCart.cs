@@ -7,12 +7,8 @@ namespace Restaurant.BL
 {
     public class ShoppingCart
     {
-        [Key]
-        public int ItemId { get; set; }
-        public int CartId { get; set; }
+        public int Id { get; set; }
+        public FoodItem FoodItem { get; set; }
         public int Quantity { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public int FoodItemId { get; set; }
-        public  virtual FoodItem FoodItem { get; set; }
     }
 }
