@@ -36,10 +36,7 @@ namespace Client_Web.Pages.Food
                 return Page();
             }
 
-            if (ShoppingCart.Id > 0)
-            {
-                restaurantData.AddItemToCart(ShoppingCart);
-            }
+            restaurantData.AddItemToCart(ShoppingCart);
 
             restaurantData.Commit();
             return RedirectToPage("./MenuItems", new { shoppingCartId = ShoppingCart.Id });
