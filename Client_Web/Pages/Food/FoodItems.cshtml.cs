@@ -16,6 +16,7 @@ namespace Client_Web.Pages.Food
         private readonly IRestaurantData restaurantData;
 
         public IEnumerable<FoodItem> FoodItems { get; set; }
+        public ShoppingCart ShoppingCart { get; set; }
         public int Id { get; set; }
 
         public FoodItemsModel(IConfiguration config, IRestaurantData restaurantData)
@@ -27,6 +28,18 @@ namespace Client_Web.Pages.Food
         {
             FoodItems = restaurantData.GetFoodItemByCategory(categoryId);
             return Page();
+        }
+        public IActionResult OnPost()
+        {
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+
+            restaurantData.AddItemToCart(ShoppingCart);
+
+            restaurantData.Commit();
+            return RedirectToPage("./MenuItems", new { shoppingCartId = ShoppingCart.Id });
         }
     }
 }

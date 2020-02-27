@@ -25,9 +25,9 @@ else
         <input asp-for="FoodItem.Description" class="form-control" required />
         <span class="text-danger" asp-validation-for="FoodItem.Description"></span>
     </div>
+
     <div class="form-group">
-        <label>Category</label>
-        <select class="form-control" asp-for="FoodItem.CategoryId" asp-items="@(new SelectList(Model.DisplayCategory, "CategoryId", "CategoryName"))" id="ddlCategories" required>
+        <label>Category</label><select class="form-control" asp-for="FoodItem.CategoryId" asp-items="@(new SelectList(Model.DisplayCategory, "CategoryId", "CategoryName"))" id="ddlCategories" required>
             <option value="" selected disabled>--Select Category--</option>
         </select>
     </div>
@@ -36,6 +36,6 @@ else
         <input asp-for="FoodItem.Price" class="form-control" required />
         <span class="text-danger" asp-validation-for="FoodItem.Price"></span>
     </div>
-    
+
     <button type="submit" class="btn btn-primary">Save</button>
 </form>

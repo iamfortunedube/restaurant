@@ -20,7 +20,7 @@ namespace Restaurant.Data
 
         public ShoppingCart AddItemToCart(ShoppingCart newCartItem)
         {
-            dbContext.Add(newCartItem);
+            dbContext.ShoppingCartItems.Add(newCartItem);
             return newCartItem;
         }
 

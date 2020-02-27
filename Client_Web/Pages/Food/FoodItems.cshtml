@@ -3,7 +3,21 @@
 @{
     ViewData["Title"] = "FoodItems";
 }
-
+<style>
+    .qty {
+        width: 40px;
+        height: 25px;
+        text-align: center;
+    }
+    input.qtyplus {
+        width:25px;
+        height:25px;
+    }
+    input.qtyminus {
+        width:25px;
+        height:25px;
+    }
+</style>
 <h1>Food Items</h1>
 
 <form method="get">
@@ -21,18 +35,26 @@
     <tr>
         <th>Food Item</th>
         <th>Description</th>
-        <th>Category</th>
         <th>Price</th>
+        <th>Quantity</th>
+        <th>Action</th>
     </tr>
     @foreach (var foodItem in Model.FoodItems)
     {
         <tr>
-            <td>
-                @foodItem.FoodItemName
-            </td>
-            <td>@foodItem.Description</td>
-            <td>@foodItem.CategoryId</td>
-            <td>R @foodItem.Price.00</td>
+            <form asp-route-id="@foodItem.Id" method="post">
+                <td>
+                    @foodItem.FoodItemName
+                </td>
+                <td>@foodItem.Description</td>
+                <td>R @foodItem.Price.00</td>
+                <td>
+                    <input type='number' name='quantity' value='0' class='qty' />
+                </td>
+                <td>
+                    <input type="submit" value="Add to cart" class="btn btn-success" />
+                </td>
+            </form>
         </tr>
     }
 </table>

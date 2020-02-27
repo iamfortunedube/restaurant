@@ -46,8 +46,9 @@ namespace Restaurant.Pages.Food
             return Page();
         }
 
-        public IActionResult OnPostAsync(FoodItem foodItems)
+        public IActionResult OnPostAsync()
         {
+             DisplayCategory = _dbContext.Categories.ToList();
             if (!ModelState.IsValid)
             {
                 return Page();
