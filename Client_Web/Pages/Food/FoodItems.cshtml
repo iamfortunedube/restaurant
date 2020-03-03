@@ -31,30 +31,42 @@
         </div>
     </div>
 </form>
-<table class="table">
-    <tr>
-        <th>Food Item</th>
-        <th>Description</th>
-        <th>Price</th>
-        <th>Quantity</th>
-        <th>Action</th>
-    </tr>
-    @foreach (var foodItem in Model.FoodItems)
-    {
+<form method="post">
+    <table class="table">
         <tr>
-            <form asp-route-id="@foodItem.Id" method="post">
+            <th>Id</th>
+            <th>Food Item</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th>Quantity</th>
+            <th>Action</th>
+        </tr>
+        @foreach (var foodItem in Model.FoodItems)
+        {
+            <tr>
                 <td>
-                    @foodItem.FoodItemName
+                    <input asp-for="@foodItem.Id" hidden name="ItemId" />
                 </td>
-                <td>@foodItem.Description</td>
-                <td>R @foodItem.Price.00</td>
                 <td>
-                    <input type='number' name='quantity' value='0' class='qty' />
+                    <input asp-for="@foodItem.FoodItemName" name="ItemName" />
+                </td>
+                <td>
+                    <input asp-for="@foodItem.Description" name="ItemDescription" />
+                </td>
+                <td>
+                    <input asp-for="@foodItem.Price.00" name="ItemPrice" />
+                </td>
+                <td>
+                    <input asp-for="@foodItem.CategoryId" name="Category" />
+                </td>
+                <td>
+                    <input asp-for="ShoppingCart.Quantity" name='Quantity' />
                 </td>
                 <td>
                     <input type="submit" value="Add to cart" class="btn btn-success" />
                 </td>
-            </form>
-        </tr>
-    }
-</table>
+            </tr>
+         }
+    </table>
+</form>

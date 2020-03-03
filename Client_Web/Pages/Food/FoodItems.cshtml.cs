@@ -29,12 +29,23 @@ namespace Client_Web.Pages.Food
             FoodItems = restaurantData.GetFoodItemByCategory(categoryId);
             return Page();
         }
-        public IActionResult OnPost()
+        public IActionResult OnPost(int itemId, string itemName, string itemDescription, int itemPrice, int categoryId, int quantity)
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
+
+            var foodItem = new FoodItem
+            {
+                Id = itemId,
+                FoodItemName = itemName,
+                Description = itemDescription,
+                Price = itemPrice,
+                CategoryId = categoryId
+            };
+            ShoppingCart.FoodItem = foodItem;
+            ShoppingCart.Quantity = quantity;
 
             restaurantData.AddItemToCart(ShoppingCart);
 

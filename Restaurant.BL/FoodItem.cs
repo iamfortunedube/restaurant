@@ -17,9 +17,7 @@ namespace Restaurant.BL
         public string Description { get; set; }
 
         public int Price { get; set; }
-
-        public byte[] FoodItemImage { get; set; }
-
+        
         [ForeignKey("Category_FK")]
         public int CategoryId { get; set; }
     }
